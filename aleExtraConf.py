@@ -6,7 +6,6 @@ PROJECT_PATH_IGNORE = [ '.git', 'Pods', '.vscode', '.xcodeproj', 'fastlane', 'Im
 BASE_FLAGS = [
         '-resource-dir',
         '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0',
-        '-x objective-c',
         '-arch x86_64',
         '-fmessage-length=0',
 #        '-fmodules',
@@ -84,7 +83,6 @@ OTHER_FLAGS = [
         '-MF',
 ]
 
-print(os.getcwd())
 PROJECT_PATH = "/Users/freedragon/Documents/Plan/study/lanioGTD"
 
 SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
@@ -155,5 +153,6 @@ def FlagsCmdForFile():
     str = ''
     lastflags = FlagsForFile()
     for item in lastflags:
-        str = str + ' ' + item
+        str += ' ' + item
+    str += ' '
     return str

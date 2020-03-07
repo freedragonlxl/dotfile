@@ -74,7 +74,6 @@ synta
 Ycm
 path
 ale
-ycm
 Define
 Pr
 Get
@@ -83,7 +82,15 @@ py3file
 pyfile
 str
 ale_objcpp_clang_cmd
-print
 Nerd
  
 space
+Bes
+circlePath
+Bezi
+loadView
+Mvvm
+shape
+progressLay
+ycm
+print

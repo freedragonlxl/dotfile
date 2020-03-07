@@ -6,7 +6,7 @@ if !exists('g:ale_objcpp_clang_options')
     let g:ale_objcpp_clang_options = '-std=c++14 -Wall'
 endif
 
-let g:ale_objcpp_clang_cmd=''
+let g:ale_objcpp_clang_cmd = ' '
 function ObjcppClangLib()	
 py3 << EOF
 import vim
@@ -20,7 +20,7 @@ endfunction
 function! ale_linters#objcpp#clang#GetCommand(buffer) abort	
 	" -iquote with the directory the file is in makes #include work for
     "  headers in the same directory.
-	if g:ale_objcpp_clang_cmd == ''
+	if g:ale_objcpp_clang_cmd == ' '
 		call ObjcppClangLib()
 	endif
 	return 'clang++ -S -x objective-c++ -fsyntax-only '
