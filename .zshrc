@@ -1,4 +1,5 @@
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#lanio is a very good boy
 export PATH="$PATH:$HOME/.rvm/bin"
 #pyenv fix无效 pyenv global 3.7.5
 eval "$(pyenv init -)"
