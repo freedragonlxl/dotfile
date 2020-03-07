@@ -1,0 +1,13 @@
+snippet dispatch_once
+static dispatch_once_t onceToken;
+dispatch_once(&onceToken, ^{
+	$1 
+});
+endsnippet
+
+snippet interface
+@interface $1:$2
+	$3
+@end
+endsnippet
+

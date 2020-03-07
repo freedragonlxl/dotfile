@@ -1,0 +1,8 @@
+view
+UILabel
+:q
+:
+i
+UI
+viewDidLoad:
+e
