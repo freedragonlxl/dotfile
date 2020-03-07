@@ -1,0 +1,359 @@
+" 在设置let g:ale_sign_error = '✗'和let g:ale_sign_warning = '⚡'这些时，可能vim不让你保存，提示fenc这个东西。
+set fenc= 
+syntax on
+syntax enable
+filetype plugin indent on
+" 显示行号
+set number
+" 允许折叠˽
+"set foldenable 
+" Enable folding
+"set foldmethod=indent
+"set foldlevel=99
+" 通过空格键快速打开和关闭折叠
+"nnoremap <space> za
+" 自动缩进
+set autoindent 
+" 自动缩进
+set cindent
+" Tab键的宽度 统一缩进为4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+" 搜索高亮
+set hlsearch 
+" 在输入要搜索的文字时，vim会实时匹配
+set incsearch 
+" 高亮显示匹配的括号
+set showmatch 
+" 在被分割的窗口间显示空白，便于阅读
+set fillchars=vert:\ ,stl:\ ,stlnc:\  
+" 设置空白字符的视觉提示
+set list listchars=extends:❯,precedes:❮,tab:▸\ ,trail:˽ 
+" 保存文件前建立备份，保存成功后删除该备份
+set writebackup 
+ "设置无备份文件
+set nobackup 
+set noswapfile
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" set <leader> is space
+let mapleader = "\<space>"
+"objc switch hm
+map <leader>hm :e %:p:s,.h$,.X123X,:s,.m$,.h,:s,.X123X$,.m,<CR>
+"filetype
+"augroup project
+"  autocmd!
+"  autocmd BufRead,BufNewFile *.h,*.m set filetype=objc
+"augroup END
+
+" <NerdTree 插件配置>
+"colorscheme -----------------------------------------------------------------------------
+"autocmd vimenter * NERDTree  "自动开启Nerdtree
+let g:NERDTreeWinSize = 30 "设定 NERDTree 视窗大小
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+map <F4> :NERDTreeToggle<CR>
+nnoremap <leader>cd :NERDTreeFind <CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__']
+let g:NERDTreeShowLineNumbers=0  " 是否显示行号
+let g:NERDTreeHidden=0     "不显示隐藏文件
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let g:NERDTreeWinPos='right'
+
+"  < YouCompleteMe 插件配置 >
+" -----------------------------------------------------------------------------
+let g:ycm_register_as_syntastic_checker = 1 "default 1
+let g:Show_diagnostics_ui = 1 "default 1
+let g:ycm_key_invoke_completion = '<c-z>'
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_binary_path = '/Users/freedragon/.pyenv/shims/python'
+let g:ycm_server_python_interpreter = '/Users/freedragon/.pyenv/shims/python'
+let g:ycm_key_list_select_completion   = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+nmap <leader>gt :YcmCompleter GoTo<CR>
+let g:ycm_filetype_whitelist = { 
+			\ "c":1,
+			\ "cpp":1,
+			\ "objc":1,
+			\ "objcpp":1,
+			\ "sh":1,
+			\ "zsh":1,
+			\ "zimbu":1,
+			\ "python":1,
+			\ }
+"disable ycm 语法检查
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt = 0
+noremap <c-z> <NOP>
+let g:ycm_semantic_triggers =  {
+\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+\ 'cs,lua,javascript': ['re!\w{2}'],
+\ 'objc,objcpp' : ['re!\@"\.*"\s',
+\ 're!\@\w+\.*\w*\s',
+\ 're!\@\(\w+\.*\w*\)\s',
+\ 're!\@\(\s*',
+\ 're!\@\[.*\]\s',
+\ 're!\@\[\s*',
+\ 're!\@\{.*\}\s',
+\ 're!\@\{\s*',
+\ "re!\@\’.*\’\s",
+\ '#ifdef ',
+\ 're!:\s*',
+\ 're!=\s*'],
+"\ 're!,\s*', ],
+\ }
+
+""<syntastic>
+"" ----------------------------------------------------------------------------
+"Execute pathogen#infect()
+"Set statusline+=%#warningmsg#
+"Set statusline+=%{SyntasticStatuslineFlag()}
+"Set statusline+=%*
+""总是打开Location List（相当于QuickFix）窗口，如果你发现syntastic因为与其他插件冲突而经常崩溃，将下面选项置0
+"Let g:syntastic_always_populate_loc_list = 1
+""自动打开Locaton List，默认值为2，表示发现错误时不自动打开，当修正以后没有再发现错误时自动关闭，置1表示自动打开自动关闭，0表示关闭自动打开和自动关闭，3表示自动打开，但不自动关闭
+"Let g:syntastic_auto_loc_list = 1
+""打开文件时自动进行检查
+"Let g:syntastic_check_on_open = 0
+""进行实时检查，如果觉得卡顿，将下面的选项置为1
+"Let g:syntastic_check_on_wq = 1
+""checkers
+"Let g:syntastic_c_checkers = ['oclint', 'gcc']
+"Let g:syntastic_objc_checkers = ['oclint', 'gcc']
+"Let g:syntastic_cpp_checkers = ['oclint', 'gcc']
+"Let g:syntastic_objcpp_checkers = ['oclint', 'gcc']
+"Let g:syntastic_objcpp_exec = '/usr/local/bin/oclint'
+""让syntastic支持C++11
+"Let g:syntastic_cpp_compiler = 'clang++'
+"Let g:syntastic_objc_compiler = 'clang'
+"Let g:syntastic_cbjcpp_compiler = 'clang++'
+"Let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+""设置error和warning的标志
+"Let g:syntastic_enable_signs = 1
+"Let g:syntastic_error_symbol='✗'
+"Let g:syntastic_warning_symbol='⚡'
+""修改Locaton List窗口高度
+"Let g:syntastic_loc_list_height = 5
+""自动跳转到发现的第一个错误或警告处
+"Let g:syntastic_auto_jump = 1
+""高亮错误
+"Let g:syntastic_enable_highlighting=1
+"Nmap <silent> sp	<Plug>LocationPrevious
+"Nmap <silent> sn	<Plug>LocationNext
+""关闭syntastic语法检查, 鼠标复制代码时用到, 防止把错误标志给复制了
+"Nnoremap <silent> <Leader>st :SyntasticToggleMode<CR>
+
+" <LeaderF 不用，转用unite>
+" -----------------------------------------------------------------------------------------
+let g:Lf_ShowRelativePath = 0
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+"noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+"noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
+" should use `Leaderf gtags --update` first
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_Gtagslabel = 'pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
+"" <ale>
+"" --------------------------------------------------------------------------------------
+""异步语法检查
+" ale-setting {{{
+let g:ale_set_highlights = 0
+"自定义error和warning图标
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+"在vim自带的状态栏中整合ale
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+"显示Linter名称,出错或警告等相关信息
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"打开文件时不进行检查
+let g:ale_lint_on_enter = 1
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+"<Leader>s触发/关闭语法检查
+nmap <Leader>t :ALEToggle<CR>
+"<Leader>d查看错误或警告的详细信息
+nmap <Leader>d :ALEDetail<CR>
+"使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
+let g:ale_linters = {
+\   'c++': ['clang'],
+\   'objc': ['clang'],
+\   'objcpp': ['clang'],
+\   'c': ['clang'],
+\   'python': ['pylint'],
+\}
+" 保存时候，才进行语法检测
+let g:ale_open_list = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+
+"Format <Clang Format>
+" -------------------------------------------------------------------------------------
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11"}
+let g:clange_format#command = "clang-format"
+" map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc,objcpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc,objcpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" if you install vim-operator-user
+autocmd FileType c,cpp,objc,objcpp map <buffer><Leader>x <Plug>(operator-clang-format)
+" Toggle auto formatting:
+"autocmd FileType c,cpp,objc,objcpp ClangFormatAutoEnable
+
+" Chromatica for clang syntax highlight
+let g:chromatica#libclang_path='/Applications/Xcode.app/Contents/Frameworks/libclang.dylib'
+let g:chromatica#enable_at_startup=0
+
+" spell check
+set spell spelllang=en_us,cjk
+set nospell
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" solve leg on relative line number
+set regexpengine=1
+
+"ag
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+
+" Unite outline
+nnoremap <leader>o :Unite outline<cr>
+
+" solarized
+set t_Co=256 
+let g:solarized_termtrans = 1
+colorscheme solarized
+"let hr = (strftime('%H'))
+"if hr >= 19
+"	set background=dark
+"elseif hr >= 8
+"	set background=light
+"elseif hr >= 0
+"	set background=dark
+"endif
+func! Theme()
+	if &background == 'dark'
+		set background=light
+	elseif &background == 'light'
+		set background=dark
+	endif
+endfunc
+let g:solarized_termcolors=256
+
+" Yank text to the OS X clipboard" 将文本复制到OS X剪贴板中
+set clipboard+=unnamedplus
+
+"in vim run
+map <F5> :call PRUN()<CR>
+func! PRUN()
+        exec "w"
+        if &filetype == 'sh'
+                :!time bash %
+        elseif &filetype == 'python'
+                exec "!clear"
+                exec "!time python3 %"
+        endif
+endfunc
+
+"markdown
+let g:vim_markdown_math = 1
+function RToc()
+    exe "/-toc .* -->"
+    let lstart=line('.')
+    exe "/-toc -->"
+    let lnum=line('.')
+    execute lstart.",".lnum."g/           /d"
+endfunction
+" 指定浏览器路径
+let g:mkdp_path_to_chrome = "path/of/chrome"
+" 指定预览主题，默认Github
+let g:mkdp_markdown_css=''
+
+let c_no_curly_error = 1
+
+"you need cp cmd
+"let g:fcitx_install = './build.py build all' "| cp ./fcitx-remote-general /usr/local/bin/fcitx-remote'
+call plug#begin('~/.config/nvim/plugged')
+	"input /brew install brew reinstall codefalling/fcitx-remote-for-osx/fcitx-remote-for-osx --with-baidu-pinyin 
+	"Plug 'CodeFalling/fcitx-vim-osx'
+	"Plug 'CodeFalling/fcitx-remote-for-osx', {'do': g:fcitx_install }
+	"stutas line
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'junegunn/vim-easy-align'
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'altercation/vim-colors-solarized'
+	Plug 'preservim/nerdtree'
+	Plug 'ycm-core/YouCompleteMe'
+	Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+	Plug 'rhysd/vim-clang-format'
+	"use ale
+"	Plug 'vim-syntastic/syntastic'
+	" swift
+	Plug 'mitsuse/autocomplete-swift'
+	Plug 'keith/swift.vim'
+	Plug 'landaire/deoplete-swift'
+	" C, C++, Objc
+	Plug 'arakashic/chromatica.nvim'
+	" Python
+	Plug 'hynek/vim-python-pep8-indent'
+	"Code Snippets
+	Plug 'SirVer/ultisnips'
+	Plug 'mileszs/ack.vim'
+	"Unite
+	Plug 'Shougo/unite.vim'
+	Plug 'Shougo/unite-outline'
+	Plug 'ryotakato/unite-outline-objc'
+	"git
+	Plug 'airblade/vim-gitgutter'
+	Plug 'tpope/vim-fugitive'
+	"markdown
+	Plug 'godlygeek/tabular'
+	Plug 'plasticboy/vim-markdown'
+	Plug 'mzlogin/vim-markdown-toc'
+	Plug 'iamcco/markdown-preview.nvim'
+	"include lib problem? ok
+	Plug 'dense-analysis/ale'
+call plug#end()
