@@ -6,9 +6,6 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export TERM=xterm-256color
 # My useful aliases
-#alias yue="trans :yue"
-#alias en="sdcv -u 朗道汉英字典5.0 "
-#alias chs="sdcv -u 朗道英汉字典5.0 "
 alias vim='nvim'
 alias vi='nvim'
 alias VI='nvim'

@@ -1,6 +1,5 @@
 BasedOnStyle: LLVM
 ColumnLimit : 170
-AlignConsecutiveAssignments : true
 BreakStringLiterals : true
 IndentWidth : 4
 Cpp11BracedListStyle : true

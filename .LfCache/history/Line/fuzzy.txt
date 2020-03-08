@@ -1,7 +1,3 @@
-leader
-dotfile
-gtags
-libpath
 Path
 show
 cust
@@ -98,3 +94,7 @@ cam
 chroma
 ClangFormat
 file
+commen
+ALE
+en
+ack

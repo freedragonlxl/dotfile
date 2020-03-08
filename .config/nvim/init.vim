@@ -29,8 +29,7 @@ set showmatch
 " 在被分割的窗口间显示空白，便于阅读
 set fillchars=vert:\ ,stl:\ ,stlnc:\  
 " 设置空白字符的视觉提示
-set listchars=extends:❯,precedes:❮,tab:▸\ ,trail:˽
-set list
+set list listchars=extends:❯,precedes:❮,tab:▸\ ,trail:˽
 " 保存文件前建立备份，保存成功后删除该备份
 set writebackup 
  "设置无备份文件
@@ -49,6 +48,10 @@ map <leader>hm :e %:p:s,.h$,.X123X,:s,.m$,.h,:s,.X123X$,.m,<CR>
 "  autocmd!
 "  autocmd BufRead,BufNewFile *.h,*.m set filetype=objc
 "augroup END
+
+"custom translate
+nnoremap <Leader>en :!trans -e google -b :en<Space>
+nnoremap <Leader>cn :!trans -e google -b :zh-CN<Space>
 
 " <NerdTree 插件配置>
 "colorscheme -----------------------------------------------------------------------------
@@ -373,10 +376,7 @@ let g:mkdp_port = ''
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
 "取消储存时自动更新目录
-let g:vmt_auto_update_on_save = 0
-nmap <C-s> <Plug>MarkdownPreview
-nmap <M-s> <Plug>MarkdownPreviewStop
-nmap <C-p> <Plug>MarkdownPreviewToggle
+let g:vmt_auto_update_on_save = 1
 "查看所有配置建议
 ":help vim-markdwon
 "[[ "跳转上一个标题
