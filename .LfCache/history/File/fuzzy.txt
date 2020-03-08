@@ -9,15 +9,11 @@ task
 cocoa
 c
 objc
-NSda
-NSD
-NSDa
 Tim
 TaskView.h
 NS
 TaskView
 NSdate
-NSDate
 Time
 Apple
 cppcheck
@@ -27,5 +23,12 @@ TaskView.m
 TaskV
 Tsk
 Nerd
-Task
 A
+Cirl
+Task
+NSDat
+ N
+NSD
+NSda
+NSDa
+NSDate

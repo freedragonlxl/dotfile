@@ -29,7 +29,8 @@ set showmatch
 " 在被分割的窗口间显示空白，便于阅读
 set fillchars=vert:\ ,stl:\ ,stlnc:\  
 " 设置空白字符的视觉提示
-set list listchars=extends:❯,precedes:❮,tab:▸\ ,trail:˽ 
+set listchars=extends:❯,precedes:❮,tab:▸\ ,trail:˽
+set list
 " 保存文件前建立备份，保存成功后删除该备份
 set writebackup 
  "设置无备份文件
@@ -223,11 +224,7 @@ let g:ale_lint_on_text_changed = 0
 
 "Format <Clang Format>
 " -------------------------------------------------------------------------------------
-let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11"}
+let g:clang_format#detect_style_file = 1
 let g:clange_format#command = "clang-format"
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc,objcpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -238,8 +235,8 @@ autocmd FileType c,cpp,objc,objcpp map <buffer><Leader>x <Plug>(operator-clang-f
 "autocmd FileType c,cpp,objc,objcpp ClangFormatAutoEnable
 
 " Chromatica for clang syntax highlight
-let g:chromatica#libclang_path='/Applications/Xcode.app/Contents/Frameworks/libclang.dylib'
-let g:chromatica#enable_at_startup=0
+"let g:chromatica#libclang_path='/Applications/Xcode.app/Contents/Frameworks/libclang.dylib'
+"let g:chromatica#enable_at_startup=0
 
 " spell check
 set spell spelllang=en_us,cjk
@@ -395,10 +392,8 @@ nmap <C-p> <Plug>MarkdownPreviewToggle
 ":GenTocMarked
 "更新目录
 ":UpdateToc
-
 "??????
 let c_no_curly_error = 1
-
 "you need cp cmd
 "let g:fcitx_install = './build.py build all' "| cp ./fcitx-remote-general /usr/local/bin/fcitx-remote'
 call plug#begin('~/.config/nvim/plugged')
@@ -422,7 +417,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'keith/swift.vim'
 	Plug 'landaire/deoplete-swift'
 	" C, C++, Objc
-	Plug 'arakashic/chromatica.nvim'
+"	Plug 'arakashic/chromatica.nvim'
 	" Python
 	Plug 'hynek/vim-python-pep8-indent'
 	"Code Snippets

@@ -1,0 +1,18 @@
+BasedOnStyle: LLVM
+ColumnLimit : 170
+AlignConsecutiveAssignments : true
+BreakStringLiterals : true
+IndentWidth : 4
+Cpp11BracedListStyle : true
+BreakBeforeBraces : Attach
+AllowShortIfStatementsOnASingleLine : true
+IndentCaseLabels : true
+ObjCBlockIndentWidth : 4
+ObjCSpaceAfterProperty : true
+AlignTrailingComments : true
+SpaceAfterCStyleCast : false
+SpacesInParentheses : false
+SpacesInSquareBrackets : false
+AllowAllParametersOfDeclarationOnNextLine : false
+TabWidth : 4
+SpacesBeforeTrailingComments : 1

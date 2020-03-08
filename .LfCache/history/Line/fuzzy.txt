@@ -1,9 +1,3 @@
-Lf_Gta
-Lf_Gtagslabel
-buffer
-ctags
-Snip
-Togg
 leader
 dotfile
 gtags
@@ -12,7 +6,6 @@ Path
 show
 cust
 viewDi
-format
 leaderf
 Else
 :Goto
@@ -49,9 +42,7 @@ term
 enable
 objcMethodCall
 objcMethod
-objc
 ob
-clang
 indent
 snip
 -j
@@ -94,3 +85,16 @@ shape
 progressLay
 ycm
 print
+style
+code_
+Der
+Clang
+format
+chrom
+objc
+{
+clang
+cam
+chroma
+ClangFormat
+file
