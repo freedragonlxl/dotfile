@@ -83,7 +83,7 @@ OTHER_FLAGS = [
         '-MF',
 ]
 
-PROJECT_PATH = "/Users/freedragon/Documents/Plan/study/lanioGTD"
+PROJECT_PATH = "/Users/freedragon/Library/Mobile Documents/com~apple~CloudDocs/iOS/lanioGTD" 
 
 SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
 
@@ -103,7 +103,8 @@ def FindPchPath():
             if not CheckPathIgnore(path):
                 continue
             if file.endswith('.pch'):
-                return os.path.join(path, file);
+                path = os.path.join(path, file).replace(' ', '\\ ')
+                return path;
     return None
 
 def FindAllPod():

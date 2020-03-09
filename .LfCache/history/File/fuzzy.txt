@@ -12,7 +12,6 @@ objc
 Tim
 TaskView.h
 NS
-TaskView
 NSdate
 Time
 Apple
@@ -25,10 +24,12 @@ Tsk
 Nerd
 A
 Cirl
-Task
 NSDat
  N
 NSD
 NSda
 NSDa
 NSDate
+Task
+Task fr
+TaskView

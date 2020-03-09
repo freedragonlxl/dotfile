@@ -1,10 +1,5 @@
-leaderf
-Else
-:Goto
-c
 c-t
 up
-Leaderf
 definition
 c-
 <
@@ -60,7 +55,6 @@ ale
 Define
 Pr
 Get
-Find
 py3file
 pyfile
 str
@@ -98,3 +92,9 @@ C-n
 markdown
 real
 http
+File
+Time
+show
+Leaderf
+showj
+Find

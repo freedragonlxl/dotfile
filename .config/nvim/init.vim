@@ -159,7 +159,7 @@ let g:ycm_semantic_triggers =  {
 
 " <LeaderF 不用，转用unite>
 " -----------------------------------------------------------------------------------------
-let g:Lf_ShowRelativePath = 0
+let g:Lf_ShowRelativePath = 1
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
