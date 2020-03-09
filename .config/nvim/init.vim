@@ -317,7 +317,7 @@ let g:mkdp_auto_close = 1
 " leave from insert mode, default 0 is auto refresh markdown as you edit or
 " move the cursor
 " default: 0
-let g:mkdp_refresh_slow = 0
+let g:mkdp_refresh_slow = 1
 " set to 1, the MarkdownPreview command can be use for all files,
 " by default it can be use in markdown file
 " default: 0
@@ -358,7 +358,7 @@ let g:mkdp_preview_options = {
     \ 'katex': {},
     \ 'uml': {},
     \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
+    \ 'disable_sync_scroll': 1,
     \ 'sync_scroll_type': 'middle',
     \ 'hide_yaml_meta': 1,
     \ 'sequence_diagrams': {},
@@ -434,7 +434,11 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'godlygeek/tabular'
 	Plug 'plasticboy/vim-markdown'
 	Plug 'mzlogin/vim-markdown-toc'
+" 占 CPU太多了
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 	"include lib problem? ok
 	Plug 'dense-analysis/ale'
+"vim 里已经有 Leaderf  和 ack 不过少了个全局搜索的工具~~~
+	Plug '/usr/local/opt/fzf'
+	Plug 'junegunn/fzf.vim'
 call plug#end()

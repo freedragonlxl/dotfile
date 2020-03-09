@@ -15,3 +15,13 @@ config push -u origin master
 config push
 
 url: https://www.atlassian.com/git/tutorials/dotfiles
+fzf extra cmd
+$(brew --prefix)/opt/fzf/install
+
+//pip 在线转移
+pip freeze >dependency.txt
+pip install -r dependency.txt
+//pip 离线安装
+pip download -r dependency.txt -d ./mylibs/
+pip install --no-index --find-links=./mylibs/
+https://blog.csdn.net/huashao0602/article/details/97617003

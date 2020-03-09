@@ -21,8 +21,7 @@ alias en="trans -e bing -b :en"
 alias zh="trans -e bing -b :zh-CN"
 alias rm="trash"
 alias ldu="ls -1 | xargs du -h -d 0 2>/dev/null"
-
-#alias rewriteoc='clang -x objective-c -rewrite-objc -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk'
+alias music="you-get -o /Users/freedragon/Music/Chinese -O " 
 ZSH_THEME="agnoster"
 plugins=(zsh-autosuggestions git)
 source /usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -115,3 +114,5 @@ function over(){ #over vpn
 
 ##afplay##end##
 alias config='/usr/bin/git --git-dir=/Users/freedragon/.cfg/ --work-tree=/Users/freedragon'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,7 +1,3 @@
-Path
-show
-cust
-viewDi
 leaderf
 Else
 :Goto
@@ -98,3 +94,7 @@ commen
 ALE
 en
 ack
+C-n
+markdown
+real
+http
