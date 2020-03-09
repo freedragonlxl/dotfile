@@ -16,10 +16,18 @@ set number
 set autoindent 
 " 自动缩进
 set cindent
-" Tab键的宽度 统一缩进为4
+" Tab Setting
+" set tab  to space
+set expandtab
+" read file's tab to 4 space
 set tabstop=4
-set softtabstop=4
+" when backspace, 4 space to 1 tab
+set softtabstop=0
+" set tab to 4 space width
 set shiftwidth=4
+set smarttab
+" set exist tab to space
+" retab!
 " 搜索高亮
 set hlsearch 
 " 在输入要搜索的文字时，vim会实时匹配
@@ -29,7 +37,7 @@ set showmatch
 " 在被分割的窗口间显示空白，便于阅读
 set fillchars=vert:\ ,stl:\ ,stlnc:\  
 " 设置空白字符的视觉提示
-set list listchars=extends:❯,precedes:❮,tab:▸\ ,trail:˽
+set list listchars=extends:❯,precedes:❮,tab:▷\ ,trail:◌
 " 保存文件前建立备份，保存成功后删除该备份
 set writebackup 
  "设置无备份文件
@@ -84,15 +92,15 @@ let g:ycm_key_list_select_completion   = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 nmap <leader>gt :YcmCompleter GoTo<CR>
 let g:ycm_filetype_whitelist = { 
-			\ "c":1,
-			\ "cpp":1,
-			\ "objc":1,
-			\ "objcpp":1,
-			\ "sh":1,
-			\ "zsh":1,
-			\ "zimbu":1,
-			\ "python":1,
-			\ }
+            \ "c":1,
+            \ "cpp":1,
+            \ "objc":1,
+            \ "objcpp":1,
+            \ "sh":1,
+            \ "zsh":1,
+            \ "zimbu":1,
+            \ "python":1,
+            \ }
 "disable ycm 语法检查
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
@@ -152,8 +160,8 @@ let g:ycm_semantic_triggers =  {
 "Let g:syntastic_auto_jump = 1
 ""高亮错误
 "Let g:syntastic_enable_highlighting=1
-"Nmap <silent> sp	<Plug>LocationPrevious
-"Nmap <silent> sn	<Plug>LocationNext
+"Nmap <silent> sp   <Plug>LocationPrevious
+"Nmap <silent> sn   <Plug>LocationNext
 ""关闭syntastic语法检查, 鼠标复制代码时用到, 防止把错误标志给复制了
 "Nnoremap <silent> <Leader>st :SyntasticToggleMode<CR>
 
@@ -267,18 +275,18 @@ let g:solarized_termtrans = 1
 colorscheme solarized
 "let hr = (strftime('%H'))
 "if hr >= 19
-"	set background=dark
+"   set background=dark
 "elseif hr >= 8
-"	set background=light
+"   set background=light
 "elseif hr >= 0
-"	set background=dark
+"   set background=dark
 "endif
 func! Theme()
-	if &background == 'dark'
-		set background=light
-	elseif &background == 'light'
-		set background=dark
-	endif
+    if &background == 'dark'
+        set background=light
+    elseif &background == 'light'
+        set background=dark
+    endif
 endfunc
 let g:solarized_termcolors=256
 
@@ -397,48 +405,48 @@ let c_no_curly_error = 1
 "you need cp cmd
 "let g:fcitx_install = './build.py build all' "| cp ./fcitx-remote-general /usr/local/bin/fcitx-remote'
 call plug#begin('~/.config/nvim/plugged')
-	"input /brew install brew reinstall codefalling/fcitx-remote-for-osx/fcitx-remote-for-osx --with-baidu-pinyin 
-	"Plug 'CodeFalling/fcitx-vim-osx'
-	"Plug 'CodeFalling/fcitx-remote-for-osx', {'do': g:fcitx_install }
-	"stutas line
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'junegunn/vim-easy-align'
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'altercation/vim-colors-solarized'
-	Plug 'preservim/nerdtree'
-	Plug 'ycm-core/YouCompleteMe'
-	Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-	Plug 'rhysd/vim-clang-format'
-	"use ale
-"	Plug 'vim-syntastic/syntastic'
-	" swift
-	Plug 'mitsuse/autocomplete-swift'
-	Plug 'keith/swift.vim'
-	Plug 'landaire/deoplete-swift'
-	" C, C++, Objc
-"	Plug 'arakashic/chromatica.nvim'
-	" Python
-	Plug 'hynek/vim-python-pep8-indent'
-	"Code Snippets
-	Plug 'SirVer/ultisnips'
-	Plug 'mileszs/ack.vim'
-	"Unite
-	Plug 'Shougo/unite.vim'
-	Plug 'Shougo/unite-outline'
-	Plug 'ryotakato/unite-outline-objc'
-	"git
-	Plug 'airblade/vim-gitgutter'
-	Plug 'tpope/vim-fugitive'
-	"markdown
-	Plug 'godlygeek/tabular'
-	Plug 'plasticboy/vim-markdown'
-	Plug 'mzlogin/vim-markdown-toc'
+    "input /brew install brew reinstall codefalling/fcitx-remote-for-osx/fcitx-remote-for-osx --with-baidu-pinyin 
+    "Plug 'CodeFalling/fcitx-vim-osx'
+    "Plug 'CodeFalling/fcitx-remote-for-osx', {'do': g:fcitx_install }
+    "stutas line
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'junegunn/vim-easy-align'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'preservim/nerdtree'
+    Plug 'ycm-core/YouCompleteMe'
+    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    Plug 'rhysd/vim-clang-format'
+    "use ale
+"   Plug 'vim-syntastic/syntastic'
+    " swift
+    Plug 'mitsuse/autocomplete-swift'
+    Plug 'keith/swift.vim'
+    Plug 'landaire/deoplete-swift'
+    " C, C++, Objc
+"   Plug 'arakashic/chromatica.nvim'
+    " Python
+    Plug 'hynek/vim-python-pep8-indent'
+    "Code Snippets
+    Plug 'SirVer/ultisnips'
+    Plug 'mileszs/ack.vim'
+    "Unite
+    Plug 'Shougo/unite.vim'
+    Plug 'Shougo/unite-outline'
+    Plug 'ryotakato/unite-outline-objc'
+    "git
+    Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive'
+    "markdown
+    Plug 'godlygeek/tabular'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'mzlogin/vim-markdown-toc'
 " 占 CPU太多了
-	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-	"include lib problem? ok
-	Plug 'dense-analysis/ale'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+    "include lib problem? ok
+    Plug 'dense-analysis/ale'
 "vim 里已经有 Leaderf  和 ack 不过少了个全局搜索的工具~~~
-	Plug '/usr/local/opt/fzf'
-	Plug 'junegunn/fzf.vim'
+    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim'
 call plug#end()
