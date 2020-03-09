@@ -84,7 +84,6 @@ OTHER_FLAGS = [
         '-MT',
         '-MF',
 ]
-
 PROJECT_PATH = os.getcwd()
 
 SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
@@ -114,7 +113,6 @@ def FindAllPod():
     if (pod_path):
         list_pods = os.walk(pod_path)
         for path, dirs, files in list_pods:
-            path = path.replace(' ', '\\ ')
             isystem = '-isystem ' + path
             include = '-I' + path
             items.append(isystem)
@@ -133,7 +131,6 @@ def FindAllPath():
     for path, dir, file in list_all_path:
         if not CheckPathIgnore(path):
             continue
-        path = path.replace(' ', '\\ ')
         include = '-I' + path
         items.append(include)
     return items
@@ -149,7 +146,3 @@ def FlagsForFile( filename, **kwargs ):
     flags += FindAllPath()
     flags += OTHER_FLAGS
     return { 'flags': flags, 'do_cache': True }
-
-def FlagsCmdForFile():
-    str = '-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk'
-    return str

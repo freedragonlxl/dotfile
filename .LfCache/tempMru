@@ -1,9 +1,14 @@
+/Users/freedragon/.ycm_extra_conf.py
+/Users/freedragon/Library/Mobile Documents/com~apple~CloudDocs/iOS/lanioGTD/lanioGTD/src/view/timekeeping/TimeViewController.m
+/Users/freedragon/Library/Mobile Documents/com~apple~CloudDocs/iOS/lanioGTD/lanioGTD/src/base/progress/CircleProgressView.m
+/Users/freedragon/Library/Mobile Documents/com~apple~CloudDocs/iOS/lanioGTD/lanioGTD/src/base/progress/CircleProgressView.h
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIProgressView.h
 /Users/freedragon/Library/Mobile Documents/com~apple~CloudDocs/iOS/lanioGTD/lanioGTD/src/view/task/TaskViewController.m
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
 /Users/freedragon/aleExtraConf.py
 /Users/freedragon/.config/nvim/init.vim
 /Users/freedragon/Library/Mobile Documents/com~apple~CloudDocs/iOS/lanioGTD/lanioGTD/src/view/task/TaskViewController.h
 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers/UINavigationItem.h
-/Users/freedragon/.ycm_extra_conf.py
 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
 /Users/freedragon/.config/nvim/plugged/LeaderF/doc/leaderf.txt
 /Users/freedragon/Library/Caches/Google/Chrome/Default/Cache/index-dir/the-real-index
@@ -110,7 +115,6 @@
 /Users/freedragon/.config/nvim/syntax/objc.vim
 /Users/freedragon/nvim-osx64/share/nvim/runtime/syntax/nosyntax.vim
 /Users/freedragon/nvim-osx64/share/nvim/runtime/syntax/syntax.vim
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
 /Users/freedragon/.config/nvim/syntax/c.vim
 /Users/freedragon/.config/nvim/syntax/cocoa_keywords.vim
 /Users/freedragon/Documents/Plan/study/lanioGTD/tags
