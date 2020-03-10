@@ -13,9 +13,9 @@ set number
 " 通过空格键快速打开和关闭折叠
 "nnoremap <space> za
 " 自动缩进
-set autoindent 
-" 自动缩进
-set cindent
+set smartindent
+"set autoindent 
+"set cindent
 " Tab Setting
 " set tab  to space
 set expandtab
@@ -25,7 +25,6 @@ set tabstop=4
 set softtabstop=0
 " set tab to 4 space width
 set shiftwidth=4
-set smarttab
 " set exist tab to space
 " retab!
 " 搜索高亮
@@ -64,6 +63,8 @@ nnoremap <Leader>zh :!trans -e google -b :zh-CN<Space>
 " n/N search up/down sheild key, make me mitake
 nmap n <Nop>
 nmap N <Nop>
+"滚动，光标下保持显示行数
+set scrolloff=20
 
 "<NerdTree 插件配置>
 "colorscheme -----------------------------------------------------------------------------
@@ -312,6 +313,7 @@ endfunc
 
 "markdown
 let g:vim_markdown_math = 1
+let g:vim_markdown_folding_disabled = 1
 function RToc()
     exe "/-toc .* -->"
     let lstart=line('.')
