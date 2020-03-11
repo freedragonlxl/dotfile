@@ -66,6 +66,34 @@ nmap N <Nop>
 "滚动，光标下保持显示行数
 set scrolloff=20
 
+"##### auto fcitx  ###########
+"1 en, 2 zh
+"记录输入法
+let g:input_toggle = 1
+function! Normal()
+    let s:input_status = system("fcitx-remote")
+    let g:input_toggle = s:input_status
+    if s:input_status == 2
+       let l:a = system("fcitx-remote -c")
+    endif
+endfunction
+
+function! Insert()
+    let s:input_status = system("fcitx-remote")
+    if g:input_toggle == 1
+        let l:a = system("fcitx-remote -c")
+    else
+        let l:a = system("fcitx-remote -o")
+    endif
+endfunction
+
+set ttimeoutlen=100
+"退出插入模式
+autocmd InsertLeave * call Normal()
+"进入插入模式
+autocmd InsertEnter * call Insert()
+"##### auto fcitx end ###### 
+
 "<NerdTree 插件配置>
 "colorscheme -----------------------------------------------------------------------------
 "autocmd vimenter * NERDTree  "自动开启Nerdtree
@@ -341,11 +369,16 @@ let g:previm_open_cmd = 'open -a Safari'
 "??????
 let c_no_curly_error = 1
 "you need cp cmd
-"let g:fcitx_install = './build.py build all' "| cp ./fcitx-remote-general /usr/local/bin/fcitx-remote'
+let g:fcitx_install = './build.py build all'
+"fcitx.vim
+set ttimeoutlen=50
 call plug#begin('~/.config/nvim/plugged')
     "input /brew install brew reinstall codefalling/fcitx-remote-for-osx/fcitx-remote-for-osx --with-baidu-pinyin 
     "Plug 'CodeFalling/fcitx-vim-osx'
-    "Plug 'CodeFalling/fcitx-remote-for-osx', {'do': g:fcitx_install }
+    "安装完之后输入这命令
+    "cp ~/.config/nvim/plugged/fcitx-remote-for-osx/fcitx-remote-osx-pinyin /usr/local/bin/fcitx-remote
+    Plug 'CodeFalling/fcitx-remote-for-osx', {'do': g:fcitx_install }
+"    Plug 'lilydjwg/fcitx.vim'
     "stutas line
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
