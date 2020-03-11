@@ -73,9 +73,8 @@ BASE_FLAGS = [
         ]
 
 BASE_INCLUDE_FLAGS = [
-        '-I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform',
-        '-I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include',
         '-I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks',
+        '-I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include',
         '-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/11.0.0/include',
         ]
 

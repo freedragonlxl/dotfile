@@ -16,3 +16,45 @@ snippet clang-format
 $1
 // clang-format on
 endsnippet
+
+snippet viewcalss
+@interface $1()
+@end
+@implementation $1
+- (void)makeView{
+}
+#pragma mark - getter
+@end
+endsnippet
+
+snippet mas_makeConstraints
+[self$1 mas_makeConstraints:^(MASConstraintMaker *make){
+	$2
+}];
+endsnippet
+
+snippet mas_remakeConstraints
+[self$1 mas_remakeConstraints:^(MASConstraintMaker *make){
+	$2
+}];
+endsnippet
+
+snippet mas_updateConstraints
+[self$1 mas_updateConstraints:^(MASConstraintMaker *make){
+	$2
+}];
+endsnippet
+
+snippet init
+if (self = [super init$1]) {
+	$2
+}
+return self;
+endsnippet
+
+snippet nil
+if ($1 == nil) {
+	$1
+}
+return $1;
+endsnippet

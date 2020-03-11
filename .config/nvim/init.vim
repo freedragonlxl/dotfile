@@ -235,10 +235,9 @@ let g:ale_linters = {
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 " 保存时候，才进行语法检测
-let g:ale_open_list = 1
+let g:ale_open_list = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
-
 "Format <Clang Format>
 " -------------------------------------------------------------------------------------
 let g:clang_format#detect_style_file = 1
