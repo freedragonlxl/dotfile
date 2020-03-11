@@ -25,3 +25,7 @@ pip install -r dependency.txt
 pip download -r dependency.txt -d ./mylibs/
 pip install --no-index --find-links=./mylibs/
 https://blog.csdn.net/huashao0602/article/details/97617003
+
+tmux 插件启东条件，手动
+cd ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm

@@ -1,0 +1,7 @@
+pane	ios	0	:poj	0	:	0	:/Users/freedragon/.tmux/plugins	1	zsh	:
+pane	ios	1	:md	1	:*	0	:/Users/freedragon	1	zsh	:
+pane	ios	2	:snippet	0	:-	0	:/Users/freedragon/.tmux/plugins	1	zsh	:
+window	ios	0	0	:	b43d,178x41,0,0,0
+window	ios	1	1	:*	b43e,178x41,0,0,1
+window	ios	2	0	:-	b43f,178x41,0,0,2
+state	ios	

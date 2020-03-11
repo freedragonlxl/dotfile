@@ -391,4 +391,6 @@ call plug#begin('~/.config/nvim/plugged')
 "vim 里已经有 Leaderf  和 ack 不过少了个全局搜索的工具~~~
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
+"tmux
+    Plug 'tpope/vim-obsession', {'do':'vim -u NONE -c \"helptags vim-obsession/doc\" -c q'}
 call plug#end()

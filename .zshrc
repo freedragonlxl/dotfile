@@ -22,7 +22,7 @@ alias zh="trans -e bing -b :zh-CN"
 alias rm="trash"
 alias ldu="ls -1 | xargs du -h -d 0 2>/dev/null"
 alias music="you-get -o /Users/freedragon/Music/Chinese -O "
-alias music="you-get -o /Users/freedragon/Movies -O "
+alias movies="you-get -o /Users/freedragon/Movies -O "
 ZSH_THEME="agnoster"
 plugins=(zsh-autosuggestions git)
 source /usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -76,7 +76,6 @@ function music_by_keyword() {
         timestamp=$(date +%s)
         dummy=$(($dummy1*$timestamp))
         song_index=$(($dummy1%$song_num+1))                              # Generate a random song index
-
         song="$(ls $m_path | grep -i -e $keyword | sed -n "$song_index"p)"   # Get the name of the qualified song
         echo -e "$song"
         afplay "$m_path$song"
