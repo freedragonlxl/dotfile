@@ -83,7 +83,7 @@ OTHER_FLAGS = [
         '-MF',
 ]
 
-PROJECT_PATH = "/Users/freedragon/Library/Mobile Documents/com~apple~CloudDocs/iOS/lanioGTD" 
+PROJECT_PATH = os.getcwd()
 
 SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
 
