@@ -376,7 +376,7 @@ call plug#begin('~/.config/nvim/plugged')
     "input /brew install brew reinstall codefalling/fcitx-remote-for-osx/fcitx-remote-for-osx --with-baidu-pinyin 
     "Plug 'CodeFalling/fcitx-vim-osx'
     "安装完之后输入这命令
-    "cp ~/.config/nvim/plugged/fcitx-remote-for-osx/fcitx-remote-osx-pinyin /usr/local/bin/fcitx-remote
+    "cp ~/.config/nvim/plugged/fcitx-remote-for-osx/fcitx-remote-baidu-pinyin /usr/local/bin/fcitx-remote
     Plug 'CodeFalling/fcitx-remote-for-osx', {'do': g:fcitx_install }
 "    Plug 'lilydjwg/fcitx.vim'
     "stutas line
