@@ -121,8 +121,8 @@ let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_python_binary_path = '/Users/freedragon/.pyenv/shims/python'
 let g:ycm_server_python_interpreter = '/Users/freedragon/.pyenv/shims/python'
-let g:ycm_key_list_select_completion   = ['<C-j>']
-let g:ycm_key_list_previous_completion = ['<C-k>']
+let g:ycm_key_list_select_completion   = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
 nmap <leader>gt :YcmCompleter GoTo<CR>
 let g:ycm_filetype_whitelist = { 
             \ "c":1,
