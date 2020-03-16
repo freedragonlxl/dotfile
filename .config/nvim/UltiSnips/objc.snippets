@@ -5,9 +5,21 @@ dispatch_once(&onceToken, ^{
 });
 endsnippet
 
-snippet interface
+snippet interface-declaration
 @interface $1:$2
-	$3
+
+@end
+endsnippet
+
+snippet interface-extension
+@interface $1()
+
+@end
+endsnippet
+
+snippet interface-category
+@interface $1($2)
+
 @end
 endsnippet
 
@@ -17,14 +29,20 @@ $1
 // clang-format on
 endsnippet
 
-snippet viewcalss
-@interface $1()
-@end
-@implementation $1
-- (void)makeView{
+snippet initview
+- (instancetype)initWithFrame:(CGRect)frame{
+	if (self = [super initWithFrame:frame]){
+		[self makeView];
+	}
+	return self;
 }
-#pragma mark - getter
-@end
+
+- (void)makeView{
+	$1
+}
+
+#pragma make - getter\setter
+
 endsnippet
 
 snippet mas_makeConstraints
@@ -52,9 +70,137 @@ if (self = [super init$1]) {
 return self;
 endsnippet
 
-snippet nil
-if ($1 == nil) {
-	$1
+snippet setter
+- (void)set:()$2{
+	_$2 = $2;
 }
-return $1;
 endsnippet
+
+snippet notnil
+if ($1){
+}
+endsnippet
+
+snippet getter
+- ($1)$2{
+	if (_$2 == nil) {
+		_$2 = [[]];
+	}
+	return _$2;
+}
+endsnippet
+
+snippet for++
+for (int index = 0; index < $1; index++){
+	$2
+}
+endsnippet
+
+snippet forin
+for ($1 in $2){
+
+}
+endsnippet
+
+snippet forenum
+[$1 enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+
+}];
+endsnippet
+
+snippet forenumReverse
+[$1 enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+
+}];
+endsnippet
+
+snippet edges
+make.edges.equalTo(self$1).with.insets(UIEdgeInsetsMake(0,0,0,0));
+endsnippet
+
+snippet UICollectionViewDataSource
+// 定义展示的Section的个数
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+}
+
+// 定义展示的UICollectionViewCell的个数
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+}
+
+// 每个UICollectionView展示的内容
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+}
+endsnippet
+
+snippet UICollectionViewDelegateFlowLayout
+// 定义每个UICollectionViewCell的大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+}
+
+// 定义每个UICollectionViewCell的margin
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+}
+
+// UICollectionViewCell最小行间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+}
+
+// UICollectionViewCell最小列间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+}
+
+// 设定页眉的尺寸
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+	return CGSizeZero;
+}
+
+// 设定页脚的尺寸
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+	return CGSizeZero;
+}
+endsnippet
+
+snippet UICollectionViewDelegate
+// UICollectionView被选中时调用的方法
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+}
+
+// 返回这个UICollectionView是否可以被选择
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+}
+endsnippet
+
+snippet UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+// 停止类型1、停止类型2
+BOOL scrollToScrollStop = !scrollView.tracking && !scrollView.dragging && !scrollView.decelerating;
+	if (scrollToScrollStop) {
+		[self scrollViewDidEndScroll];
+	}
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	if (!decelerate) {
+	// 停止类型3
+		BOOL dragToDragStop = scrollView.tracking && !scrollView.dragging && !scrollView.decelerating;
+		if (dragToDragStop) {
+			[self scrollViewDidEndScroll];
+		}
+	}
+}
+
+- (void)scrollViewDidEndScroll {
+}
+endsnippet
+

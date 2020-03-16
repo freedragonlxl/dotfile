@@ -94,6 +94,9 @@ autocmd InsertLeave * call Normal()
 autocmd InsertEnter * call Insert()
 "##### auto fcitx end ###### 
 
+"鼠标滚动
+"set mouse=a
+
 "<NerdTree 插件配置>
 "colorscheme -----------------------------------------------------------------------------
 "autocmd vimenter * NERDTree  "自动开启Nerdtree
@@ -156,6 +159,11 @@ let g:ycm_semantic_triggers =  {
 \ 're!=\s*'],
 "\ 're!,\s*', ],
 \ }
+
+map <F6> :call SetFileType()<CR>
+function! SetFileType()
+set filetype=objc
+endfunction
 
 ""<syntastic>
 "" ----------------------------------------------------------------------------
@@ -287,8 +295,8 @@ set spell spelllang=en_us,cjk
 set nospell
 
 " ultisnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<c-d>"
+let g:UltiSnipsJumpForwardTrigger="<c-d>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -321,6 +329,7 @@ func! Theme()
         set background=dark
     endif
 endfunc
+set background=light
 let g:solarized_termcolors=256
 
 " Yank text to the OS X clipboard" 将文本复制到OS X剪贴板中
