@@ -1,3 +1,4 @@
+###项目根目录下cp一份
 import os
 import ycm_core
 
@@ -5,10 +6,15 @@ import ycm_core
 PROJECT_PATH_IGNORE = [ '.git', 'Pods', '.vscode', '.xcodeproj', 'fastlane', 'Images.xcassets', 'fir_build', '.xcassets', '.xcworkspace', 'shenzhenrenTests', 'shenzhenrenUITests', '.lproj', '.idea' ]
 
 BASE_FLAGS = [
+        '-S',
         '-resource-dir',
         '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0',
-        '-x objective-c',
-        '-arch x86_64',
+        '-isysroot',
+        '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk',
+        '-x',
+        'objective-c',
+        '-arch',
+        'x86_64',
         '-fmessage-length=0',
 #        '-fmodules',
 #        '-gmodules',
@@ -17,8 +23,11 @@ BASE_FLAGS = [
         '-fmacro-backtrace-limit=0',
         '-D__arm__=1',
         '-D__IPHONE_OS_VERSION_MIN_REQUIRED=80000',
-        '-std=gnu99',
+        '-std=gnu11',
+        '-fobjc-exceptions',
+        '-fexceptions',
         '-fobjc-arc',
+        '-fobjc-weak',
         '-Wnon-modular-include-in-framework-module',
         '-Werror=non-modular-include-in-framework-module',
         '-Wno-trigraphs',
@@ -60,8 +69,6 @@ BASE_FLAGS = [
         '-Wundeclared-selector',
         '-Wno-deprecated-implementations',
         '-DOBJC_OLD_DISPATCH_PROTOTYPES=0',
-        '-isysroot',
-        '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk',
         '-fstrict-aliasing',
         '-Wprotocol',
         '-Wdeprecated-declarations',
@@ -75,7 +82,7 @@ BASE_FLAGS = [
 BASE_INCLUDE_FLAGS = [
         '-I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks',
         '-I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include',
-        '-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/11.0.0/include',
+        '-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0',
         ]
 
 OTHER_FLAGS = [

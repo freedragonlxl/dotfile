@@ -41,8 +41,8 @@ snippet initview
 	$1
 }
 
-#pragma make - getter\setter
-
+#pragma make - setter
+#pragma make - getter
 endsnippet
 
 snippet mas_makeConstraints
@@ -70,12 +70,6 @@ if (self = [super init$1]) {
 return self;
 endsnippet
 
-snippet setter
-- (void)set:()$2{
-	_$2 = $2;
-}
-endsnippet
-
 snippet notnil
 if ($1){
 }
@@ -87,6 +81,20 @@ snippet getter
 		_$2 = [[]];
 	}
 	return _$2;
+}
+endsnippet
+
+snippet getterlabel
+- (UILabel*)$1{
+	if (_$1 == nil) {
+		_$1 = [[UILabel alloc] init];
+		_$1.text = @"";
+		_$1.textAlignment = NSTextAlignmentCenter;
+		[_$1.font fontWithSize:14];
+		[_$1 setBackgroundColor:[UIColor clearColor]];
+		[_$1 setTextColor:[UIColor blackColor]];
+	}
+	return _$1;
 }
 endsnippet
 
@@ -102,8 +110,14 @@ for ($1 in $2){
 }
 endsnippet
 
-snippet forenum
-[$1 enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+snippet forenum_dict
+[$1 enumerateKeysAndObjectsUsingBlock:^(id	_Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+
+}];
+endsnippet
+
+snippet forenum_array
+[$1 enumerateObjectsUsingBlock:^(ObjectType obj, NSUInteger idx, BOOL *stop) {
 
 }];
 endsnippet
@@ -202,5 +216,25 @@ BOOL scrollToScrollStop = !scrollView.tracking && !scrollView.dragging && !scrol
 
 - (void)scrollViewDidEndScroll {
 }
+endsnippet
+
+snippet singleton
++ (instancetype)shareInstance {
+	return [[super alloc] init];
+}
+
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
+	static $1 *instance;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		instance = [super allocWithZone:zone];
+	});
+	return instance;
+}
+
+- (instancetype)copywithzone:(NSZone*)zone{
+	return instance
+}
+
 endsnippet
 

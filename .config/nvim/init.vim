@@ -118,6 +118,8 @@ let g:NERDTreeWinPos='right'
 "  < YouCompleteMe 插件配置 >
 " -----------------------------------------------------------------------------
 let g:ycm_register_as_syntastic_checker = 0 "default 1
+"let g:syntastic_objcpp_checkers = ['clang++']
+"let g:syntastic_objc_checkers = ['clang']
 let g:Show_diagnostics_ui = 0 "default 1
 let g:ycm_key_invoke_completion = '<c-z>'
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
@@ -381,6 +383,7 @@ let c_no_curly_error = 1
 let g:fcitx_install = './build.py build all'
 "fcitx.vim
 set ttimeoutlen=50
+
 call plug#begin('~/.config/nvim/plugged')
     "input /brew install brew reinstall codefalling/fcitx-remote-for-osx/fcitx-remote-for-osx --with-baidu-pinyin 
     "Plug 'CodeFalling/fcitx-vim-osx'
@@ -395,7 +398,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'jiangmiao/auto-pairs'
     Plug 'altercation/vim-colors-solarized'
     Plug 'preservim/nerdtree'
-    Plug 'ycm-core/YouCompleteMe'
+    Plug 'ycm-core/YouCompleteMe', {'do':'./install.py --clang-completer --system-libclang'}
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'rhysd/vim-clang-format'
     "use ale
