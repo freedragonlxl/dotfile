@@ -19,8 +19,8 @@ alias ViM='nvim'
 alias vIm='nvim'
 #alias en="trans -e google -b :en"
 #alias zh="trans -e google -b :zh-CN"
-alias en="trans -b :en"
-alias zh="trans -b :zh-CN"
+#alias en="trans -b :en"
+#alias zh="trans -b :zh-CN"
 alias rm="trash"
 alias ldu="ls -1 | xargs du -h -d 0 2>/dev/null"
 alias music="you-get -o /Users/freedragon/Music/Chinese -O "
@@ -118,3 +118,5 @@ function over(){ #over vpn
 alias config='/usr/bin/git --git-dir=/Users/freedragon/.cfg/ --work-tree=/Users/freedragon'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#ZSH_THEME="powerlevel9k/powerlevel9k"

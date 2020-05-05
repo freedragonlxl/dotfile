@@ -87,7 +87,6 @@ function! Insert()
     endif
 endfunction
 
-set ttimeoutlen=100
 "退出插入模式
 autocmd InsertLeave * call Normal()
 "进入插入模式
@@ -96,6 +95,9 @@ autocmd InsertEnter * call Insert()
 
 "鼠标滚动
 "set mouse=a
+
+"多次粘贴
+xnoremap p pgvy
 
 "<NerdTree 插件配置>
 "colorscheme -----------------------------------------------------------------------------
@@ -129,6 +131,7 @@ let g:ycm_server_python_interpreter = '/Users/freedragon/.pyenv/shims/python'
 let g:ycm_key_list_select_completion   = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 nmap <leader>gt :YcmCompleter GoTo<CR>
+nmap <leader>fx :YcmCompleter FixIt<CR>
 let g:ycm_filetype_whitelist = { 
             \ "c":1,
             \ "cpp":1,
@@ -276,6 +279,10 @@ let g:ale_linters_explicit = 1
 let g:ale_open_list = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
+"let g:ale_c_clang_options = ''
+"let g:ale_cpp_clang_options = ''
+"let g:ale_objc_clang_options = '-std=gnu++14'
+"let g:ale_objcpp_clang_options = '-std=gnu++14'
 "Format <Clang Format>
 " -------------------------------------------------------------------------------------
 let g:clang_format#detect_style_file = 1
@@ -331,7 +338,7 @@ func! Theme()
         set background=dark
     endif
 endfunc
-set background=light
+set background=dark
 let g:solarized_termcolors=256
 
 " Yank text to the OS X clipboard" 将文本复制到OS X剪贴板中
@@ -362,6 +369,7 @@ endfunction
 "取消储存时自动更新目录
 let g:vmt_auto_update_on_save = 1
 let g:previm_open_cmd = 'open -a Safari'
+let g:previm_show_header = 0
 "查看所有配置建议
 ":help vim-markdwon
 "[[ "跳转上一个标题
@@ -383,6 +391,14 @@ let c_no_curly_error = 1
 let g:fcitx_install = './build.py build all'
 "fcitx.vim
 set ttimeoutlen=50
+
+"airline
+let g:airline#extensions#wordcount#enabled = 0
+"为什么不直接映射命令，因为vim脚本不执行|noh
+function! WordCount()
+    exec "%s/\\S//gn | noh"
+endfunction
+noremap wc :call WordCount()<CR>
 
 call plug#begin('~/.config/nvim/plugged')
     "input /brew install brew reinstall codefalling/fcitx-remote-for-osx/fcitx-remote-for-osx --with-baidu-pinyin 
@@ -439,4 +455,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'junegunn/fzf.vim'
 "tmux
     Plug 'tpope/vim-obsession', {'do':'vim -u NONE -c \"helptags vim-obsession/doc\" -c q'}
+"coding
+    Plug 'jiazhoulvke/jianfan'
 call plug#end()

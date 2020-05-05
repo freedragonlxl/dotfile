@@ -5,18 +5,22 @@ PROJECT_PATH_IGNORE = [ '.git', 'Pods', '.vscode', '.xcodeproj', 'fastlane', 'Im
 
 BASE_FLAGS = [
         '-resource-dir',
-        '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0',
-        '-arch x86_64',
+#xcode更新，会自动更新版本，需要手动更改
+        '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3',
+        '-isysroot',
+        '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk',
+        '-arch',
+        'x86_64',
         '-fmessage-length=0',
-#        '-fmodules',
-#        '-gmodules',
         '-fmodules-cache-path=/Users/apple/Library/Developer/Xcode/DerivedData/ModuleCache',
         '-fdiagnostics-show-note-include-stack',
         '-fmacro-backtrace-limit=0',
         '-D__arm__=1',
         '-D__IPHONE_OS_VERSION_MIN_REQUIRED=80000',
-#        '-std=gnu99', ale_linter file already update 
+        '-fobjc-exceptions',
+        '-fexceptions',
         '-fobjc-arc',
+        '-fobjc-weak',
         '-Wnon-modular-include-in-framework-module',
         '-Werror=non-modular-include-in-framework-module',
         '-Wno-trigraphs',
@@ -58,8 +62,6 @@ BASE_FLAGS = [
         '-Wundeclared-selector',
         '-Wno-deprecated-implementations',
         '-DOBJC_OLD_DISPATCH_PROTOTYPES=0',
-        '-isysroot',
-        '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk',
         '-fstrict-aliasing',
         '-Wprotocol',
         '-Wdeprecated-declarations',
@@ -67,14 +69,13 @@ BASE_FLAGS = [
         '-g',
         '-Wno-sign-conversion',
         '-Wno-infinite-recursion',
-        '-fembed-bitcode-marker',
-        ]
+        '-fembed-bitcode-marker',        ]
 
 BASE_INCLUDE_FLAGS = [
         '-I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform',
         '-I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include',
         '-F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks',
-        '-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include',
+        '-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include',
 ]
 
 OTHER_FLAGS = [

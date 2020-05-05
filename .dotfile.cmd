@@ -29,3 +29,5 @@ https://blog.csdn.net/huashao0602/article/details/97617003
 tmux 插件启东条件，手动
 cd ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm
+
+每次更新xcode，clang版本就会更新，会影响ycm_extra_conf.py文件的自动补全配置
