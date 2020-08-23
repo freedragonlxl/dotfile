@@ -9,6 +9,7 @@ config commit -m "Add vimrc"
 config add .bashrc
 config commit -m "Add bashrc"
 config remote add origin git@github.com:freedragonlxl/dotfile.git
+config add -u 表示添加编辑或者删除的文件，不包括新添加的文件
 ##fisrt
 config push -u origin master
 ##then

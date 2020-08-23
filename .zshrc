@@ -39,6 +39,7 @@ export HOMEBREW_NO_AUTO_UPDATE=true
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 function proxy_off(){
+    unset no_proxy
 	unset http_proxy
     unset https_proxy
     ps -ef | grep V2Milk | grep -v grep | awk '{print $2}' | xargs kill
@@ -81,16 +82,26 @@ function music_by_keyword() {
         song="$(ls $m_path | grep -i -e $keyword | sed -n "$song_index"p)"   # Get the name of the qualified song
         echo -e "$song"
         afplay "$m_path$song"
-        wait
+        wait``
     done
 }
 
-function n() {  # next song
+function ml() {
+    keyword="."
+    if [ -n "$1" ]; then
+        keyword=$1
+    fi
+    m_path=~/Music/Chinese/
+    list=$(ls $m_path | grep -i -e $keyword)
+    echo -e "$list"
+}
+
+function mn() {  # next song
     pid="$(ps -ef | grep afplay | grep -v grep | head -1 | awk '{print $2}')"
     kill -INT $pid
 }
 
-function mm() { # terminate afplay
+function me() { # terminate afplay
     pid="$(ps -ef | grep afplay | grep -v grep | head -1 | awk '{print $2}')"
     ppid="$(ps -ef | grep afplay | grep -v grep | head -1 | awk '{print $3}')"
     kill -INT $ppid && kill -INT $pid
