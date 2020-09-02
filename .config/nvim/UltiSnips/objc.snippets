@@ -78,7 +78,7 @@ endsnippet
 snippet getter
 - ($1)$2{
 	if (_$2 == nil) {
-		_$2 = [[]];
+		_$2 = [[$3]];
 	}
 	return _$2;
 }
@@ -102,7 +102,7 @@ snippet for++
 for (int index = 0; index < $1; index++){
 	$2
 }
-endsnippet
+ndsnippet
 
 snippet forin
 for ($1 in $2){
@@ -257,3 +257,40 @@ snippet tableviewdelegate
 	return cell;
 }
 endsnippet
+
+snippet remark
+/**
+$1
+*/
+endsnippet
+
+snippet pragmav
+#pragma mark - life-cycle
+#pragma mark - delegate
+#pragma mark - event-response
+#pragma mark - setter
+#pragma mark - getter
+endsnippet
+
+snippet pragmac
+#pragma mark - lifecycle
+#pragma mark - V·Control
+#pragma mark - V·VM·DataScheduling
+#pragma mark - V·VM·RAC
+#pragma mark - getter
+endsnippet
+
+snippet pragmam
+#pragma mark - insert
+#pragma mark - update
+#pragma mark - delete
+#pragma mark - search
+#pragma mark - getter
+endsnippet
+
+snippet pragmamv
+#pragma mark - M->V
+#pragma mark - V->M
+#pragma mark - getter
+endsnippet
+

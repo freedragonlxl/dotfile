@@ -37,3 +37,7 @@ git clone https://github.com/devcxm/iOS-Images-Extractor
 cd iOS-Images-Extractor
 git submodule update --init --recursive
 open iOSImagesExtractor.xcworkspace
+
+pod的问题：
+pod某库时，如ReactiveObjC, 库里面有extobjc目录，形成framework之后，extobjc却消失；
+这会影响ale检测以及Xcode跳转也出现问题。这时候我采用主动调整文件位置，以及全局替换PodsPoj文件相关内容

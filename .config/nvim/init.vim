@@ -56,6 +56,9 @@ map <leader>hm :e %:p:s,.h$,.X123X,:s,.m$,.h,:s,.X123X$,.m,<CR>
 "  autocmd BufRead,BufNewFile *.h,*.m set filetype=objc
 "augroup END
 
+"设置文件类型为objc
+map <leader>oc :set filetype=objc<CR>
+
 "custom translate
 nnoremap <Leader>en :!trans -e google -b :en<Space>
 nnoremap <Leader>zh :!trans -e google -b :zh-CN<Space>
@@ -100,7 +103,6 @@ autocmd InsertEnter * call Insert()
 xnoremap p pgvy
 
 "<NerdTree 插件配置>
-"colorscheme -----------------------------------------------------------------------------
 "autocmd vimenter * NERDTree  "自动开启Nerdtree
 let g:NERDTreeWinSize = 30 "设定 NERDTree 视窗大小
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -216,6 +218,7 @@ let g:Lf_ShowRelativePath = 1
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
+let g:Lf_UseMemoryCache = 0
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 " popup mode
@@ -223,10 +226,14 @@ let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+"搜索当前目录下的文件
 let g:Lf_ShortcutF = "<leader>ff"
+" 搜索当前的Buffer:当前文件缓存堆栈
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+" 搜索最近使用过的文件
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+" 搜索当前文件的字符
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 "noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
 "noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
@@ -249,12 +256,12 @@ noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 let g:ale_set_highlights = 0
 "自定义error和warning图标
 let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚡'
+let g:ale_sign_warning = '•'
 "在vim自带的状态栏中整合ale
-let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+let g:ale_statusline_format = ['✗ %d', '• %d', '✔ OK']
 "显示Linter名称,出错或警告等相关信息
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_error_str = '✗ E'
+let g:ale_echo_msg_warning_str = '• W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "打开文件时不进行检查
 let g:ale_lint_on_enter = 0
@@ -266,12 +273,13 @@ nmap <Leader>t :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
 nmap <Leader>d :ALEDetail<CR>
 "使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
+"python :flake8 是 pep8（检查代码风格）、pyflakes（检查代码错误）、mccabe（检查代码复杂度
 let g:ale_linters = {
 \   'c++': ['clang'],
 \   'objc': ['clang'],
 \   'objcpp': ['clang'],
 \   'c': ['clang'],
-\   'python': ['pylint'],
+\   'python': ['flake8'],
 \}
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
@@ -283,9 +291,11 @@ let g:ale_lint_on_text_changed = 0
 "let g:ale_cpp_clang_options = ''
 "let g:ale_objc_clang_options = '-std=gnu++14'
 "let g:ale_objcpp_clang_options = '-std=gnu++14'
+
 "Format <Clang Format>
 " -------------------------------------------------------------------------------------
 let g:clang_format#detect_style_file = 1
+let g:clang_format#auto_format=1
 let g:clange_format#command = "clang-format"
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc,objcpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -320,26 +330,35 @@ nnoremap <Leader>a :Ack!<Space>
 nnoremap <leader>o :Unite outline<cr>
 
 " solarized
-set t_Co=256 
-let g:solarized_termtrans = 1
-colorscheme solarized
-"let hr = (strftime('%H'))
-"if hr >= 19
-"   set background=dark
-"elseif hr >= 8
-"   set background=light
-"elseif hr >= 0
-"   set background=dark
-"endif
-func! Theme()
-    if &background == 'dark'
-        set background=light
-    elseif &background == 'light'
-        set background=dark
-    endif
-endfunc
+syntax enable
 set background=dark
+colorscheme solarized
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
 let g:solarized_termcolors=256
+"set t_Co=256 
+"let g:solarized_termtrans = 1
+"colorscheme solarized
+""let hr = (strftime('%H'))
+""if hr >= 19
+""   set background=dark
+""elseif hr >= 8
+""   set background=light
+""elseif hr >= 0
+""   set background=dark
+""endif
+"func! Theme()
+"    if &background == 'dark'
+"        set background=light
+"    elseif &background == 'light'
+"        set background=dark
+"    endif
+"endfunc
+"set background=dark
+"let g:solarized_termcolors=256
 
 " Yank text to the OS X clipboard" 将文本复制到OS X剪贴板中
 set clipboard+=unnamedplus
@@ -368,7 +387,7 @@ function RToc()
 endfunction
 "取消储存时自动更新目录
 let g:vmt_auto_update_on_save = 1
-let g:previm_open_cmd = 'open -a Safari'
+let g:previm_open_cmd = 'open -a Google\ Chrome'
 let g:previm_show_header = 0
 "查看所有配置建议
 ":help vim-markdwon

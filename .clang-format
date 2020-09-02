@@ -1,17 +1,81 @@
-BasedOnStyle: LLVM
-ColumnLimit : 170
-BreakStringLiterals : true
-IndentWidth : 4
-Cpp11BracedListStyle : true
-BreakBeforeBraces : Attach
-AllowShortIfStatementsOnASingleLine : true
-IndentCaseLabels : true
-ObjCBlockIndentWidth : 4
-ObjCSpaceAfterProperty : true
-AlignTrailingComments : true
-SpaceAfterCStyleCast : false
-SpacesInParentheses : false
-SpacesInSquareBrackets : false
-AllowAllParametersOfDeclarationOnNextLine : false
-TabWidth : 4
-SpacesBeforeTrailingComments : 1
+---
+Language: ObjC
+AccessModifierOffset: 0
+ConstructorInitializerIndentWidth: 4
+ObjCBlockIndentWidth: 4
+ContinuationIndentWidth: 4
+AlignEscapedNewlinesLeft: false
+AlignTrailingComments: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
+AlwaysBreakTemplateDeclarations: false
+AlwaysBreakBeforeMultilineStrings: false
+BreakBeforeBinaryOperators: All
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializersBeforeComma: false
+BinPackParameters: true
+ColumnLimit: 0
+IndentWidth: 4
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+DerivePointerBinding: false
+ExperimentalAutoDetectBinPacking: false
+IndentCaseLabels: true
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: All
+ObjCSpaceAfterProperty: true
+ObjCSpaceBeforeProtocolList: false
+PenaltyBreakBeforeFirstCallParameter: 19
+PenaltyBreakComment: 300
+PenaltyBreakString: 1000
+PenaltyBreakFirstLessLess: 120
+PenaltyExcessCharacter: 1000000
+PenaltyReturnTypeOnItsOwnLine: 60
+PointerBindsToType: false
+SpacesBeforeTrailingComments: 1
+Cpp11BracedListStyle: true
+Standard: Cpp11
+TabWidth: 4
+UseTab: Never
+IndentFunctionDeclarationAfterType: true
+SpacesInParentheses: false
+SpacesInAngles:  false
+SpaceInEmptyParentheses: false
+SpacesInCStyleCastParentheses: false
+SpacesInContainerLiterals: false
+SpaceBeforeAssignmentOperators: true
+CommentPragmas:  '^ IWYU pragma:'
+SpaceBeforeParens: ControlStatements
+AlignOperands: true
+BinPackArguments: false
+BinPackParameters: false
+AlignAfterOpenBracket: Align
+ObjCBinPackProtocolList: Never
+AllowShortBlocksOnASingleLine: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterEnum: false
+  AfterStruct: false
+  SplitEmptyFunction: false
+  AfterClass: false
+  AfterControlStatement: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  BeforeCatch: false
+  AfterExternBlock: false
+  AfterUnion: false
+  AfterStruct: false
+  BeforeElse: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+IncludeBlocks: Merge
+IncludeCategories:
+  - Regex:           '^<.*\.h>'
+    Priority:        -1
+  - Regex:           '^<.*'
+    Priority:        2
+  - Regex:           '.*'
+    Priority:        3
