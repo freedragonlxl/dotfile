@@ -15,7 +15,6 @@ AlwaysBreakBeforeMultilineStrings: false
 BreakBeforeBinaryOperators: All
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializersBeforeComma: false
-BinPackParameters: true
 ColumnLimit: 0
 IndentWidth: 4
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
@@ -51,7 +50,7 @@ AlignOperands: true
 BinPackArguments: false
 BinPackParameters: false
 AlignAfterOpenBracket: Align
-ObjCBinPackProtocolList: Never
+ObjCBinPackProtocolList: Auto
 AllowShortBlocksOnASingleLine: false
 BreakBeforeBraces: Custom
 BraceWrapping:
