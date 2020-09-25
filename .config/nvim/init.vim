@@ -69,6 +69,8 @@ nmap N <Nop>
 "滚动，光标下保持显示行数
 set scrolloff=20
 
+"python auto format
+
 "##### auto fcitx  ###########
 "1 en, 2 zh
 "记录输入法
@@ -126,6 +128,7 @@ let g:ycm_register_as_syntastic_checker = 0 "default 1
 "let g:syntastic_objc_checkers = ['clang']
 let g:Show_diagnostics_ui = 0 "default 1
 let g:ycm_key_invoke_completion = '<c-z>'
+let g:ycm_max_diagnostics_to_display = 0
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_python_binary_path = '/Users/freedragon/.pyenv/shims/python'
@@ -134,13 +137,11 @@ let g:ycm_key_list_select_completion   = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 nmap <leader>gt :YcmCompleter GoTo<CR>
 nmap <leader>fx :YcmCompleter FixIt<CR>
-let g:ycm_filetype_whitelist = { 
+let g:ycm_filetype_whitelist = {
             \ "c":1,
             \ "cpp":1,
             \ "objc":1,
             \ "objcpp":1,
-            \ "sh":1,
-            \ "zsh":1,
             \ "python":1,
             \ }
 "disable ycm 语法检查
@@ -148,10 +149,9 @@ let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 set completeopt=menu,menuone
 let g:ycm_add_preview_to_completeopt = 0
-noremap <c-z> <NOP>
+"noremap <c-z> <NOP>
 let g:ycm_semantic_triggers =  {
-\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-\ 'cs,lua,javascript': ['re!\w{2}'],
+\ 'c,cpp,java,go,erlang,perl,cs,lua,javascript,python': ['re!\w{2}'],
 \ 'objc,objcpp' : ['re!\@"\.*"\s',
 \ 're!\@\w+\.*\w*\s',
 \ 're!\@\(\w+\.*\w*\)\s',
@@ -166,11 +166,6 @@ let g:ycm_semantic_triggers =  {
 \ 're!=\s*'],
 "\ 're!,\s*', ],
 \ }
-
-map <F6> :call SetFileType()<CR>
-function! SetFileType()
-set filetype=objc
-endfunction
 
 ""<syntastic>
 "" ----------------------------------------------------------------------------
@@ -281,11 +276,17 @@ let g:ale_linters = {
 \   'c': ['clang'],
 \   'python': ['flake8'],
 \}
+let g:ale_fixers = {
+\  'python': [
+\    'yapf'
+\   ]
+\}
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 " 保存时候，才进行语法检测
 let g:ale_open_list = 0
 let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 0
 "let g:ale_c_clang_options = ''
 "let g:ale_cpp_clang_options = ''
@@ -321,6 +322,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 " solve leg on relative line number
 set regexpengine=1
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 
 "ag
 cnoreabbrev Ack Ack!
@@ -419,6 +421,23 @@ function! WordCount()
 endfunction
 noremap wc :call WordCount()<CR>
 
+"" jedi-vim
+"let g:jedi#goto_command = "<leader>gc"
+"let g:jedi#goto_assignments_command = "<leader>ga"
+"let g:jedi#goto_stubs_command = "<leader>gs"
+"let g:jedi#goto_definitions_command = "<leader>gd"
+
+"leetcode
+"nnoremap <leader>ll :LeetCodeList<cr>
+"nnoremap <leader>lt :LeetCodeTest<cr>
+"nnoremap <leader>ls :LeetCodeSubmit<cr>
+"nnoremap <leader>li :LeetCodeSignIn<cr>
+"
+"let g:leetcode_china = 1
+"let g:leetcode_solution_filetype = 'python3'
+"let g:leetcode_browser = 'chrome'
+"let g:leetcode_debug = 1
+
 call plug#begin('~/.config/nvim/plugged')
     "input /brew install brew reinstall codefalling/fcitx-remote-for-osx/fcitx-remote-for-osx --with-baidu-pinyin 
     "Plug 'CodeFalling/fcitx-vim-osx'
@@ -449,6 +468,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'hynek/vim-python-pep8-indent'
     "Code Snippets
     Plug 'SirVer/ultisnips'
+    "ACK search
     Plug 'mileszs/ack.vim'
     "Unite
     Plug 'Shougo/unite.vim'
@@ -476,4 +496,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-obsession', {'do':'vim -u NONE -c \"helptags vim-obsession/doc\" -c q'}
 "coding
     Plug 'jiazhoulvke/jianfan'
+"python 补全，不用ycm
+"    Plug 'davidhalter/jedi-vim'
+"leetcode
+"    Plug 'ianding1/leetcode.vim'
 call plug#end()
