@@ -51,3 +51,16 @@ libexec/lib/python3.7/site-packages/pycodestyle.py
 
 leetcode-vim:
 把X改成√
+
+tmux:
+problem    open terminal failed: can't find terminfo database
+输入：tmux kill-server
+
+tar -zxf tmux-*.tar.gz
+cd tmux-*/
+sh autogen.sh
+./configure
+make && sudo make install
+export PATH=$HOME/local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
+export MANPATH=$HOME/local/share/man:$MANPATH

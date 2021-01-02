@@ -36,3 +36,4 @@ call ale#linter#Define('objc', {
 \   'command': function('ale_linters#objc#clang#GetCommand'),
 \   'callback': 'ale#handlers#gcc#HandleGCCFormatWithIncludes',
 \})
+

@@ -1,5 +1,14 @@
+export TOOLCHAINS=swift
+
+# Add tmux config
+export PATH=$HOME/local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
+export MANPATH=$HOME/local/share/man:$MANPATH
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 #lanio is a very good boy
+#
+export PYENV_ROOT=/Users/freedragon/.pyenv/
 export PATH="$PATH:$HOME/.rvm/bin"
 #pyenv fix无效 pyenv global 3.7.5
 eval "$(pyenv init -)"
@@ -16,7 +25,7 @@ alias Vim='nvim'
 alias VIm='nvim'
 alias viM='nvim'
 alias ViM='nvim'
-alias vIm='nvim'
+#alias vIm='nvim'
 #alias en="trans -e google -b :en"
 #alias zh="trans -e google -b :zh-CN"
 #alias en="trans -b :en"
@@ -24,6 +33,7 @@ alias vIm='nvim'
 alias rm="trash"
 alias ldu="ls -1 | xargs du -h -d 0 2>/dev/null"
 alias music="you-get -o /Users/freedragon/Music/Chinese -O "
+alias clean="tmux kill-session -t 0"
 ZSH_THEME="agnoster"
 plugins=(zsh-autosuggestions git)
 source /usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

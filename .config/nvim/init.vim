@@ -1,11 +1,13 @@
-" 在设置let g:ale_sign_error = '✗'和let g:ale_sign_warning = '⚡'这些时，可能vim不让你保存，提示fenc这个东西。
+"" 在设置let g:ale_sign_error = '✗'和let g:ale_sign_warning = '⚡'这些时，可能vim不让你保存，提示fenc这个东西。
 set fenc= 
 syntax on
 syntax enable
 filetype plugin indent on
 " 显示行号
-set number
-" 允许折叠˽
+set nu
+" 屏蔽行号
+" set nonu
+"" 允许折叠˽
 "set foldenable 
 " Enable folding
 "set foldmethod=indent
@@ -43,13 +45,13 @@ set writebackup
 set nobackup 
 set noswapfile
 " Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
+nnoremap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+nnoremap ga <Plug>(EasyAlign)
 " set <leader> is space
 let mapleader = "\<space>"
 "objc switch hm
-map <leader>hm :e %:p:s,.h$,.X123X,:s,.m$,.h,:s,.X123X$,.m,<CR>
+nnoremap <leader>hm :e %:p:s,.h$,.X123X,:s,.m$,.h,:s,.X123X$,.m,<CR>
 "filetype
 "augroup project
 "  autocmd!
@@ -57,15 +59,30 @@ map <leader>hm :e %:p:s,.h$,.X123X,:s,.m$,.h,:s,.X123X$,.m,<CR>
 "augroup END
 
 "设置文件类型为objc
-map <leader>oc :set filetype=objc<CR>
+nnoremap <leader>oc :set filetype=objc<CR>
 
 "custom translate
 nnoremap <Leader>en :!trans -e google -b :en<Space>
 nnoremap <Leader>zh :!trans -e google -b :zh-CN<Space>
 
 " n/N search up/down sheild key, make me mitake
-nmap n <Nop>
-nmap N <Nop>
+nnoremap n <Nop>
+nnoremap N <Nop>
+" Neovim
+" 在插入模式下无法输入以下按键，还有其他没有列出屏蔽，在这里警告别使用以下按键
+map F1 <Nop>
+map F2 <Nop>
+map F3 <Nop>
+map F4 <Nop>
+map F5 <Nop>
+map F6 <Nop>
+map F7 <Nop>
+map F8 <Nop>
+map F9 <Nop>
+map F10 <Nop>
+map F11 <Nop>
+map F12 <Nop>
+
 "滚动，光标下保持显示行数
 set scrolloff=20
 
@@ -104,12 +121,16 @@ autocmd InsertEnter * call Insert()
 "多次粘贴
 xnoremap p pgvy
 
+" 光标竖横线
+set cursorcolumn
+set cursorline
+
 "<NerdTree 插件配置>
 "autocmd vimenter * NERDTree  "自动开启Nerdtree
 let g:NERDTreeWinSize = 30 "设定 NERDTree 视窗大小
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-map <F4> :NERDTreeToggle<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>cd :NERDTreeFind <CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
@@ -120,6 +141,17 @@ let g:NERDTreeHidden=0     "不显示隐藏文件
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinPos='right'
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
 
 "  < YouCompleteMe 插件配置 >
 " -----------------------------------------------------------------------------
@@ -135,8 +167,8 @@ let g:ycm_python_binary_path = '/Users/freedragon/.pyenv/shims/python'
 let g:ycm_server_python_interpreter = '/Users/freedragon/.pyenv/shims/python'
 let g:ycm_key_list_select_completion   = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
-nmap <leader>gt :YcmCompleter GoTo<CR>
-nmap <leader>fx :YcmCompleter FixIt<CR>
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>fx :YcmCompleter FixIt<CR>
 let g:ycm_filetype_whitelist = {
             \ "c":1,
             \ "cpp":1,
@@ -261,12 +293,12 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "打开文件时不进行检查
 let g:ale_lint_on_enter = 0
 "普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
-nmap <Leader>pe <Plug>(ale_previous_wrap)
-nmap <Leader>ne <Plug>(ale_next_wrap)
+nnoremap <Leader>pe <Plug>(ale_previous_wrap)
+nnoremap <Leader>ne <Plug>(ale_next_wrap)
 "<Leader>s触发/关闭语法检查
-nmap <Leader>t :ALEToggle<CR>
+nnoremap <Leader>t :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
-nmap <Leader>d :ALEDetail<CR>
+nnoremap <Leader>d :ALEDetail<CR>
 "使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
 "python :flake8 是 pep8（检查代码风格）、pyflakes（检查代码错误）、mccabe（检查代码复杂度
 let g:ale_linters = {
@@ -275,6 +307,7 @@ let g:ale_linters = {
 \   'objcpp': ['clang'],
 \   'c': ['clang'],
 \   'python': ['flake8'],
+\   'swift': ['swiftlint'],
 \}
 let g:ale_fixers = {
 \  'python': [
@@ -366,7 +399,7 @@ let g:solarized_termcolors=256
 set clipboard+=unnamedplus
 
 "in vim run
-map <F5> :call PRUN()<CR>
+nnoremap <leader>py :call PRUN()<CR>
 func! PRUN()
         exec "w"
         if &filetype == 'sh'
@@ -459,9 +492,7 @@ call plug#begin('~/.config/nvim/plugged')
     "use ale
 "   Plug 'vim-syntastic/syntastic'
     " swift
-    Plug 'mitsuse/autocomplete-swift'
     Plug 'keith/swift.vim'
-    Plug 'landaire/deoplete-swift'
     " C, C++, Objc
 "   Plug 'arakashic/chromatica.nvim'
     " Python
@@ -500,4 +531,5 @@ call plug#begin('~/.config/nvim/plugged')
 "    Plug 'davidhalter/jedi-vim'
 "leetcode
 "    Plug 'ianding1/leetcode.vim'
+    Plug 'keith/sourcekittendaemon.vim'
 call plug#end()
