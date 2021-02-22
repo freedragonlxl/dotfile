@@ -47,21 +47,21 @@ export HOMEBREW_NO_AUTO_UPDATE=true
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-function proxy_off(){
-    unset no_proxy
-	unset http_proxy
-    unset https_proxy
-    ps -ef | grep V2Milk | grep -v grep | awk '{print $2}' | xargs kill
-	echo -e "已关闭代理"
-}
-
-function proxy_on() {
-	open /Applications/弄子里.app
-	export no_proxy="localhost,127.0.0.1,localaddress.localdomain.com"
-    export http_proxy="http://127.0.0.1:8001"
-    export https_proxy=$http_proxy
-    echo -e "已开启代理"
-}
+#function proxy_off(){
+#    unset no_proxy
+#	unset http_proxy
+#    unset https_proxy
+#    ps -ef | grep V2Milk | grep -v grep | awk '{print $2}' | xargs kill
+#	echo -e "已关闭代理"
+#}
+#
+#function proxy_on() {
+#	open /Applications/弄子里.app
+#	export no_proxy="localhost,127.0.0.1,localaddress.localdomain.com"
+#    export http_proxy="http://127.0.0.1:8001"
+#    export https_proxy="https://127.0.0.1:8001"
+#    echo -e "已开启代理"
+#}
 
 #if brew list | grep coreutils > /dev/null ; then 
 #	PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH" 

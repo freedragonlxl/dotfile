@@ -308,6 +308,7 @@ let g:ale_linters = {
 \   'c': ['clang'],
 \   'python': ['flake8'],
 \   'swift': ['swiftlint'],
+\   'markdown': ['markdownlint'],
 \}
 let g:ale_fixers = {
 \  'python': [
@@ -364,16 +365,40 @@ nnoremap <Leader>a :Ack!<Space>
 " Unite outline
 nnoremap <leader>o :Unite outline<cr>
 
-" solarized
+"为什么不直接映射命令，因为vim脚本不执行|noh
+function! WordCount()
+    exec "%s/\\S//gn | noh"
+endfunction
+noremap wc :call WordCount()<CR>
+
+" colorscheme
 syntax enable
-set background=dark
 colorscheme solarized
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-let g:solarized_termcolors=256
+let g:solarized_termcolors=200
+set background=light
+" Novel with Coding seoul256 goyo limelight
+" function name must start with a capital or "s:"
+" function! Write()
+"     syntax enable
+"     colorscheme seoul256
+"     let g:seoul256_background = 236 "设置背景颜色深度
+"     set background=dark "设置背景颜色为黑色, 必须设置, 否则上面的数值设置没有意义
+" endfunction
+" function! Code()
+"     syntax enable
+"     colorscheme solarized
+"     let g:solarized_termcolors=256
+"     set background=light
+" endfunction
+" nnoremap <Leader>e :call Write()<cr>
+" nnoremap <Leader>q :call Code()<cr>
+"limelight
+"let g:limelight_default_coefficient = 0.5 " 设置隐藏区域的黑暗度, 值越大越暗
+"let g:limelight_paragraph_span = 2  "设置暗光的跨度, 暗光所能照亮的范围
+"let g:limelight_priority = -1  "暗光优先级, 防止搜索的高亮效果被覆盖
+"autocmd! User GoyoEnter Limelight "进入 Goyo 专注插件时, 同时开启暗光效果
+"autocmd! User GoyoLeave Limelight! "离开 Goyo 专注插件时, 同时退出暗光效果
+" solarized
 "set t_Co=256 
 "let g:solarized_termtrans = 1
 "colorscheme solarized
@@ -447,12 +472,7 @@ let g:fcitx_install = './build.py build all'
 set ttimeoutlen=50
 
 "airline
-let g:airline#extensions#wordcount#enabled = 0
-"为什么不直接映射命令，因为vim脚本不执行|noh
-function! WordCount()
-    exec "%s/\\S//gn | noh"
-endfunction
-noremap wc :call WordCount()<CR>
+"let g:airline#extensions#wordcount#enabled = 0
 
 "" jedi-vim
 "let g:jedi#goto_command = "<leader>gc"
@@ -492,7 +512,6 @@ call plug#begin('~/.config/nvim/plugged')
     "use ale
 "   Plug 'vim-syntastic/syntastic'
     " swift
-    Plug 'keith/swift.vim'
     " C, C++, Objc
 "   Plug 'arakashic/chromatica.nvim'
     " Python
@@ -520,16 +539,26 @@ call plug#begin('~/.config/nvim/plugged')
 "    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
     "include lib problem? ok
     Plug 'dense-analysis/ale'
-"vim 里已经有 Leaderf  和 ack 不过少了个全局搜索的工具~~~
-    Plug '/usr/local/opt/fzf'
-    Plug 'junegunn/fzf.vim'
+"vim 里已经有 Leaderf  和 ack 和Leaderf 功能冲突，
+"目前使用ack+Leaderf
+"不过少了个全局搜索的工具~~~
+"    Plug '/usr/local/opt/fzf'
+"    Plug 'junegunn/fzf.vim'
 "tmux
     Plug 'tpope/vim-obsession', {'do':'vim -u NONE -c \"helptags vim-obsession/doc\" -c q'}
-"coding
+"jian fan chinese convert
     Plug 'jiazhoulvke/jianfan'
 "python 补全，不用ycm
 "    Plug 'davidhalter/jedi-vim'
 "leetcode
 "    Plug 'ianding1/leetcode.vim'
-    Plug 'keith/sourcekittendaemon.vim'
+"    Plug 'keith/sourcekittendaemon.vim'
+"    Plug 'dengcqw/sourcekittendaemon.vim'
+"    Plug 'keith/swift.vim'
+" Novel
+    " Plug 'junegunn/seoul256.vim'
+    " Plug 'junegunn/goyo.vim'
+    " Plug 'junegunn/limelight.vim'
+" comment
+    Plug 'tpope/vim-commentary'
 call plug#end()
