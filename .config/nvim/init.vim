@@ -128,8 +128,8 @@ set cursorline
 "<NerdTree 插件配置>
 "autocmd vimenter * NERDTree  "自动开启Nerdtree
 let g:NERDTreeWinSize = 30 "设定 NERDTree 视窗大小
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeDirArrowExpandable = '◉'
+let g:NERDTreeDirArrowCollapsible = '○'
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>cd :NERDTreeFind <CR>
 autocmd StdinReadPre * let s:std_in=1
@@ -447,7 +447,7 @@ function RToc()
 endfunction
 "取消储存时自动更新目录
 let g:vmt_auto_update_on_save = 1
-let g:previm_open_cmd = 'open -a Google\ Chrome'
+let g:previm_open_cmd = 'open -a Safari'
 let g:previm_show_header = 0
 "查看所有配置建议
 ":help vim-markdwon

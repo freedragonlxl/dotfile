@@ -64,3 +64,10 @@ make && sudo make install
 export PATH=$HOME/local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
 export MANPATH=$HOME/local/share/man:$MANPATH
+
+gitee github共存问题，提交经常要输入账户密码：
+去项目文件夹下配置下邮箱和用户名就好了~
+// 本地配置
+$ git config --local user.name '个人github账号名' 
+$ git config --local user.email '个人github账号邮箱'
+
