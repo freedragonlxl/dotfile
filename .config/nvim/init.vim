@@ -125,6 +125,12 @@ xnoremap p pgvy
 set cursorcolumn
 set cursorline
 
+"背景透明
+"highlight Normal guibg=NONE ctermbg=None
+"hi Normal ctermfg=252 ctermbg=none
+"highlight winblend = 100
+"hi Normal guibg=none
+
 "<NerdTree 插件配置>
 "autocmd vimenter * NERDTree  "自动开启Nerdtree
 let g:NERDTreeWinSize = 30 "设定 NERDTree 视窗大小
@@ -141,17 +147,29 @@ let g:NERDTreeHidden=0     "不显示隐藏文件
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinPos='right'
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
+" let g:NERDTreeIndicatorMapCustom = {
+"     \ "Modified"  : "✹",
+"     \ "Staged"    : "✚",
+"     \ "Untracked" : "✭",
+"     \ "Renamed"   : "➜",
+"     \ "Unmerged"  : "═",
+"     \ "Deleted"   : "✖",
+"     \ "Dirty"     : "✗",
+"     \ "Clean"     : "✔︎",
+"     \ "Unknown"   : "?"
+"     \ }
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'m',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'*',
+                \ 'Renamed'   :'r',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'!',
+                \ 'Ignored'   :'⊠',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
 
 "  < YouCompleteMe 插件配置 >
 " -----------------------------------------------------------------------------
@@ -376,6 +394,8 @@ syntax enable
 colorscheme solarized
 let g:solarized_termcolors=200
 set background=light
+hi Normal guibg=NONE ctermbg=NONE
+let g:dracula_colorterm = 0
 " Novel with Coding seoul256 goyo limelight
 " function name must start with a capital or "s:"
 " function! Write()
@@ -505,6 +525,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'jiangmiao/auto-pairs'
     Plug 'altercation/vim-colors-solarized'
     Plug 'preservim/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+"    Plug 'ryanoasis/vim-devicons'
     Plug 'ycm-core/YouCompleteMe', {'do':'./install.py --clang-completer --system-libclang'}
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
